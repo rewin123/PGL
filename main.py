@@ -19,7 +19,12 @@ class Quad():
 		self.draw_con()
 		glEnd()
 
-quad = Quad([[-1,-1,-1], [1,-1,-1], [1,1,-1], [-1,1,-1]])
+quad = Quad([[-1,-1,-1], [1,-1,-1], [1,1,-1], [-1,1,-1]])c
+quad1 = Quad([[-1,-1,-1], [1,-1,-1], [-1,1,1], [-1,1,1]])d
+quad2 = Quad([[-1,1,www1], [-1,-1,1], [1,-1,1], [1,1,1]])sd
+quad3 = Quad([[1,1,-1], [1,-1,-1], [1,-1,1], [1,1,1]])s
+quad4 = Quad([[1,1,-1], [1,1,1], [-1,1,1], [-1,1,-1]])c
+quad5 = Quad([[1,-1,-1], [1,-1,1], [-1,-1,1], [-1,-1,-1]])sd
 
 pygame.init()
 display = (800, 600)
@@ -50,5 +55,10 @@ while True:
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	quad.draw()
+	quad1.draw()
+	quad2.draw()
+	quad3.draw()
+	quad4.draw()
+	quad5.draw()
 	pygame.display.flip()
 	pygame.time.wait(10)

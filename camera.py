@@ -30,6 +30,7 @@ class Camera():
 		self.pos += move[2] * self.frw + move[1] * self.up - move[0] * rgt
 
 	def rotate(self, angle, x, y, z):
-		self.frw += vector_mul(self.frw, self.up) * y * angle
+		rgt = vector_mul(self.frw, self.up)
+		self.frw += rgt * y * angle - self.up * x * angle
 		self.frw /= np.linalg.norm(self.frw)
 

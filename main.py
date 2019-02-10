@@ -34,6 +34,20 @@ while True:
 		if event.type == pygame.QUIT:
 			pygame.quit()
 			quit()
+
+	pressed = pygame.key.get_pressed()
+	if pressed[pygame.K_w]:
+		glTranslatef(0,0,5000 / 60 / 60 / 1000 * 10)
+
+	if pressed[pygame.K_s]:
+		glTranslatef(0,0,-5000 / 60 / 60 / 1000 * 10)
+
+	if pressed[pygame.K_d]:
+		glTranslatef(-5000 / 60 / 60 / 1000 * 10,0,0)
+
+	if pressed[pygame.K_a]:
+		glTranslatef(5000 / 60 / 60 / 1000 * 10,0,0)
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	quad.draw()
 	pygame.display.flip()

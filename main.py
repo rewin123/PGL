@@ -42,7 +42,7 @@ camera.translate(np.array([0,0,-5]))
 
 mouse = Mouse([display[0] / 2, display[1] / 2])
 
-glLightModelfv(GL_LIGHT_MODEL_TWO_SIDE, 0)
+glLightModelfv(GL_LIGHT_MODEL_AMBIENT, 0.2)
 glEnable(GL_LIGHTING)
 glEnable(GL_LIGHT0)
 glLightfv(GL_LIGHT0, GL_POSITION, (-2,0,0))

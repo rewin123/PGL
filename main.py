@@ -13,7 +13,7 @@ camera = Camera()
 class Quad():
 	def __init__(self, verts):
 		self.verts = verts
-		self.edges = [[0,1], [0,3], [1,2], [2,3]]
+		self.edges = [[0,1,2],[2,3,0]]
 
 	def draw_con(self):
 		for edge in self.edges:
@@ -21,7 +21,8 @@ class Quad():
 				glVertex3fv(self.verts[vertex])
 
 	def draw(self):
-		glBegin(GL_LINES)
+		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, (1,0,0))
+		glBegin(GL_TRIANGLES)
 		self.draw_con()
 		glEnd()
 
@@ -40,6 +41,11 @@ gluPerspective(45, (display[0] /  display[1]), 0.1, 50.0)
 camera.translate(np.array([0,0,-5]))
 
 mouse = Mouse([display[0] / 2, display[1] / 2])
+
+glLightModelfv(GL_LIGHT_MODEL_AMBIENT, 0.2)
+glEnable(GL_LIGHTING)
+glEnable(GL_LIGHT0)
+glLightfv(GL_LIGHT0, GL_POSITION, (-2,0,0))
 
 while True:
 	glMatrixMode(GL_PROJECTION)

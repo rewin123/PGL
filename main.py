@@ -7,31 +7,19 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from camera import Camera
 from mouse import Mouse
+from block_system import Cube
 
 camera = Camera()
 
-class Quad():
-	def __init__(self, verts):
-		self.verts = verts
-		self.edges = [[0,1,2],[2,3,0]]
 
-	def draw_con(self):
-		for edge in self.edges:
-			for vertex in edge:
-				glVertex3fv(self.verts[vertex])
+#quad = Quad([[-1,-1,-1], [1,-1,-1], [1,1,-1], [-1,1,-1]])
+#quad1 = Quad([[-1,-1,-1], [1,-1,-1], [1,1,-1], [-1,1,-1]])
+#quad2 = Quad([[-1,1,1], [-1,-1,1], [1,-1,1], [1,1,1]])
+#quad3 = Quad([[1,1,-1], [1,-1,-1], [1,-1,1], [1,1,1]])
+#quad4 = Quad([[1,1,-1], [1,1,1], [-1,1,1], [-1,1,-1]])
+#quad5 = Quad([[1,-1,-1], [1,-1,1], [-1,-1,1], [-1,-1,-1]])
 
-	def draw(self):
-		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, (1,0,0))
-		glBegin(GL_TRIANGLES)
-		self.draw_con()
-		glEnd()
-
-quad = Quad([[-1,-1,-1], [1,-1,-1], [1,1,-1], [-1,1,-1]])
-quad1 = Quad([[-1,-1,-1], [1,-1,-1], [1,1,-1], [-1,1,-1]])
-quad2 = Quad([[-1,1,1], [-1,-1,1], [1,-1,1], [1,1,1]])
-quad3 = Quad([[1,1,-1], [1,-1,-1], [1,-1,1], [1,1,1]])
-quad4 = Quad([[1,1,-1], [1,1,1], [-1,1,1], [-1,1,-1]])
-quad5 = Quad([[1,-1,-1], [1,-1,1], [-1,-1,1], [-1,-1,-1]])
+cube = Cube()
 
 pygame.init()
 display = (800, 600)
@@ -69,6 +57,9 @@ while True:
 	if pressed[pygame.K_a]:
 		camera.translate([10000 / 60 / 60 / 1000 * 10,0,0])
 
+	if pressed[pygame.K_q]:
+		quit()
+
 	mouse.update_mouse()
 	camera.rotate(mouse.dx * 0.001, 0, 1, 0)
 	camera.rotate(mouse.dy * 0.001, 1, 0, 0)
@@ -79,11 +70,12 @@ while True:
 
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-	quad.draw()
-	quad1.draw()
-	quad2.draw()
-	quad3.draw()
-	quad4.draw()
-	quad5.draw()
+	#quad.draw()
+	#quad1.draw()
+	#quad2.draw()
+	#quad3.draw()
+	#quad4.draw()
+	#quad5.draw()
+	cube.draw()
 	pygame.display.flip()
 	pygame.time.wait(10)

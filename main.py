@@ -3,11 +3,13 @@ from pygame.locals import *
 import numpy as np
 
 from OpenGL.GL import *
+from OpenGL.GL import shaders
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from camera import Camera
 from mouse import Mouse
 from block_system import Cube
+from shader_loader import ShaderLoader
 
 camera = Camera()
 
@@ -35,10 +37,15 @@ glEnable(GL_LIGHTING)
 glEnable(GL_LIGHT0)
 glLightfv(GL_LIGHT0, GL_POSITION, (-4,0,0))
 
+
+shader = ShaderLoader()
+
+
 while True:
 	glMatrixMode(GL_PROJECTION)
 	glLoadIdentity()
 	gluPerspective(45, (display[0] /  display[1]), 0.1, 50.0)
+
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			pygame.quit()
@@ -77,5 +84,6 @@ while True:
 	#quad4.draw()
 	#quad5.draw()
 	cube.draw()
+	shader.draw()
 	pygame.display.flip()
-	pygame.time.wait(10)
+	#pygame.time.wait(10)

@@ -11,6 +11,14 @@ class Quad():
 		self.verts = verts
 		self.edges = [[0,1,2],[2,3,0]]
 
+	def move(self,x,y,z):
+		for index in range(0, len(self.verts)):
+			v = self.verts[index]
+			self.verts[index] = [v[0] + x, v[1] + y, v[2] + z]
+
+
+
+
 	def draw_con(self):
 		for edge in self.edges:
 			for vertex in edge:
@@ -31,6 +39,16 @@ class Cube():
 		self.quad4 = Quad([[1,1,-1], [1,-1,-1], [1,-1,1], [1,1,1]])
 		self.quad5 = Quad([[1,1,-1], [1,1,1], [-1,1,1], [-1,1,-1]])
 		self.quad6 = Quad([[1,-1,-1], [1,-1,1], [-1,-1,1], [-1,-1,-1]])
+
+
+	def move(self,x,y,z):
+		self.quad1.move(x,y,z)
+		self.quad2.move(x,y,z)
+		self.quad3.move(x,y,z)
+		self.quad4.move(x,y,z)
+		self.quad5.move(x,y,z)
+		self.quad6.move(x,y,z)
+
 		
 		
 	def draw(self):
@@ -40,4 +58,3 @@ class Cube():
 		self.quad4.draw()
 		self.quad5.draw()
 		self.quad6.draw()
-		

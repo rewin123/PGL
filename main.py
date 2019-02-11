@@ -22,6 +22,9 @@ camera = Camera()
 #quad5 = Quad([[1,-1,-1], [1,-1,1], [-1,-1,1], [-1,-1,-1]])
 
 cube = Cube()
+cube.move(2,0,0)
+cube2 = Cube()
+
 
 pygame.init()
 display = (800, 600)
@@ -85,5 +88,7 @@ while True:
 	#quad5.draw()
 	cube.draw()
 	shader.draw()
+	cube2.draw()
+
 	pygame.display.flip()
 	#pygame.time.wait(10)
